@@ -394,6 +394,11 @@ class QTRSensors
     ///
     /// See \ref md_usage for more information and example code.
     void calibrate(QTRReadMode mode = QTRReadMode::On);
+    
+
+    void writeCalibration(uint16_t *maxSensorValues, uint16_t *minSensorValues, QTRReadMode mode = QTRReadMode::On);
+
+    bool readCalibration(uint16_t *maxSensorValues, uint16_t *minSensorValues, QTRReadMode mode = QTRReadMode::On);
 
     /// \brief Resets all calibration that has been done.
     void resetCalibration();
@@ -548,13 +553,16 @@ class QTRSensors
     /// \}
 
   private:
-
+    
     uint16_t emittersOnWithPin(uint8_t pin);
 
     // Handles the actual calibration, including (re)allocating and
     // initializing the storage for the calibration values if necessary.
     void calibrateOnOrOff(CalibrationData & calibration, QTRReadMode mode);
 
+    void writeCalibrationData(CalibrationData & calibration, uint16_t * maxSensorValues, uint16_t * minSensorValues);
+    bool readCalibrationData(CalibrationData & calibration, uint16_t * maxSensorValues, uint16_t * minSensorValues);
+    
     void readPrivate(uint16_t * sensorValues, uint8_t start = 0, uint8_t step = 1);
 
     uint16_t readLinePrivate(uint16_t * sensorValues, QTRReadMode mode, bool invertReadings);
