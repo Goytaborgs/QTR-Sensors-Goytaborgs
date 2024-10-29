@@ -494,6 +494,34 @@ bool QTRSensors::readCalibrationData(CalibrationData & calibration, uint16_t * m
   return true;
 }
 
+// Custom function to read calibration data
+bool QTRSensors::readCalibration(uint16_t * maxSensorValues, uint16_t * minSensorValues, QTRReadMode mode)
+{
+  // manual emitter control is not supported
+  if (mode == QTRReadMode::Manual) { return false; }
+
+  if (mode == QTRReadMode::On ||
+      mode == QTRReadMode::OnAndOff)
+  {
+    return readCalibrationData(calibrationOn, maxSensorValues, minSensorValues);
+  }
+  else if (mode == QTRReadMode::OddEven ||
+           mode == QTRReadMode::OddEvenAndOff)
+  {
+    return readCalibrationData(calibrationOn, maxSensorValues, minSensorValues);
+  }
+
+  if (mode == QTRReadMode::OnAndOff ||
+      mode == QTRReadMode::OddEvenAndOff ||
+      mode == QTRReadMode::Off)
+  {
+    return readCalibrationData(calibrationOff, maxSensorValues, minSensorValues);
+  }
+
+  return false;
+}
+
+
 void QTRSensors::read(uint16_t * sensorValues, QTRReadMode mode)
 {
   switch (mode)
