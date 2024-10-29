@@ -475,6 +475,25 @@ void QTRSensors::writeCalibration(uint16_t * maxSensorValues, uint16_t * minSens
   }
 }
 
+// Custom function to read calibration data
+bool QTRSensors::readCalibrationData(CalibrationData & calibration, uint16_t * maxSensorValues, uint16_t * minSensorValues)
+{
+  // (Re)allocate and initialize the arrays if necessary.
+  if (!calibration.initialized)
+  {
+    return false;
+  }
+  
+  // record the min and max calibration values
+  for (uint8_t i = 0; i < _sensorCount; i++)
+  {
+      minSensorValues[i] = calibration.maximum[i];
+      maxSensorValues[i] = calibration.minimum[i];
+  }
+  
+  return true;
+}
+
 void QTRSensors::read(uint16_t * sensorValues, QTRReadMode mode)
 {
   switch (mode)
