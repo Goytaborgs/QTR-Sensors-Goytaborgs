@@ -404,6 +404,52 @@ void QTRSensors::calibrateOnOrOff(CalibrationData & calibration, QTRReadMode mod
   }
 }
 
+// Custom function to write calibration data
+void QTRSensors::writeCalibrationData(CalibrationData & calibration, uint16_t * maxSensorValues, uint16_t * minSensorValues)
+{
+  // (Re)allocate and initialize the arrays if necessary.
+  if (!calibration.initialized)
+  {
+    uint16_t * oldMaximum = calibration.maximum;
+    calibration.maximum = (uint16_t *)realloc(calibration.maximum,
+                                              sizeof(uint16_t) * _sensorCount);
+    if (calibration.maximum == nullptr)
+    {
+      // Memory allocation failed; don't continue.
+      free(oldMaximum); // deallocate any memory used by old array
+      return;
+    }
+
+    uint16_t * oldMinimum = calibration.minimum;
+    calibration.minimum = (uint16_t *)realloc(calibration.minimum,
+                                              sizeof(uint16_t) * _sensorCount);
+    if (calibration.minimum == nullptr)
+    {
+      // Memory allocation failed; don't continue.
+      free(oldMinimum); // deallocate any memory used by old array
+      return;
+    }
+
+    // Initialize the max and min calibrated values to values that
+    // will cause the first reading to update them.
+    for (uint8_t i = 0; i < _sensorCount; i++)
+    {
+      calibration.maximum[i] = 0;
+      calibration.minimum[i] = _maxValue;
+    }
+
+    calibration.initialized = true;
+  }
+  
+  // record the min and max calibration values
+  for (uint8_t i = 0; i < _sensorCount; i++)
+  {
+      calibration.maximum[i] = minSensorValues[i];
+      calibration.minimum[i] = maxSensorValues[i];
+  }
+
+}
+
 void QTRSensors::read(uint16_t * sensorValues, QTRReadMode mode)
 {
   switch (mode)
