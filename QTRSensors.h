@@ -395,10 +395,10 @@ class QTRSensors
     /// See \ref md_usage for more information and example code.
     void calibrate(QTRReadMode mode = QTRReadMode::On);
     
+    void writeCalibration(uint16_t * maxSensorValues, uint16_t * minSensorValues, QTRReadMode mode = QTRReadMode::On);
 
-    void writeCalibration(uint16_t *maxSensorValues, uint16_t *minSensorValues, QTRReadMode mode = QTRReadMode::On);
 
-    bool readCalibration(uint16_t *maxSensorValues, uint16_t *minSensorValues, QTRReadMode mode = QTRReadMode::On);
+    bool readCalibration(uint16_t * maxSensorValues, uint16_t * minSensorValues, QTRReadMode mode = QTRReadMode::On);
 
     /// \brief Resets all calibration that has been done.
     void resetCalibration();
