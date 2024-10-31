@@ -2,7 +2,6 @@
 
 Version: 4.1.0<br>
 Release date: 2024-10-29<br>
-[www.pololu.com](https://www.pololu.com/)
 
 ## Summary
 
@@ -45,6 +44,7 @@ Several example sketches are available that show how to use the library. You can
 For complete documentation of this library, see [the qtr-sensors-arduino documentation][doc].  If you are already on that page, see the QTRSensors class reference.
 
 ## Version history
+* 4.1.0 (2024-10-29): Added Functionality
 * 4.0.0 (2019-03-15): Major library rewrite: instead of a hierarchy of classes for different sensor types, the library now provides a single `QTRSensors` class, and instances of this class can be configured for a specific sensor type. Configuration of sensor pins and other settings is now done using more human-readable class methods instead of constructor parameters. Support for calibration using the odd/even read modes has been added.
 * 3.1.0 (2018-08-08): Added support for dimmable QTR and QTRX sensors with separate control of odd/even emitter banks.
 * 3.0.0 (2016-08-16): Updated library to work with the Arduino Library Manager.
