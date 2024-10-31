@@ -7,7 +7,7 @@ Release date: 2024-10-29<br>
 
 This is a library for the Arduino IDE that helps interface with [Pololu QTR reflectance sensors][qtr].
 
-## Supported platforms
+## Plataformas Suportadas
 
 This library is designed to work with the Arduino IDE versions 1.8.x or later; we have not tested it with earlier versions.  This library should support any Arduino-compatible board, including the [Pololu A-Star controllers][a-star].
 
