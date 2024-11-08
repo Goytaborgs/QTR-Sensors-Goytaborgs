@@ -395,8 +395,61 @@ class QTRSensors
     /// See \ref md_usage for more information and example code.
     void calibrate(QTRReadMode mode = QTRReadMode::On);
     
+    /// \brief Writes the calibration data
+    /// 
+    /// \param maxSensorValues A pointer to an array in which to read the
+    /// calibration sensor readings from.  There **MUST** be space in the array for
+    /// as many values as there were sensors specified in setSensorPins().
+    ///
+    /// \param minSensorValues A pointer to an array in which to read the
+    /// calibration sensor readings from.  There **MUST** be space in the array for
+    /// as many values as there were sensors specified in setSensorPins().   
+    /// 
+    /// \param mode The emitter behavior during the read, as a member of the
+    /// ::QTRReadMode enum. The default is QTRReadMode::On. Manual emitter
+    /// control with QTRReadMode::Manual is not supported.
+    ///
+    /// This method reads minSensorValues and maxSensorValues the values 
+    /// are stored in #calibrationOn and/or
+    /// #calibrationOff for use by the readCalibrated() method.
+    ///
+    /// If the storage for the calibration values has not been initialized,
+    /// this function will (re)allocate the arrays and initialize the maximum
+    /// and minimum values to 0 and the maximum possible sensor reading,
+    /// respectively, so that the very first calibration sensor reading will
+    /// update both of them.
+    ///
+    /// Note that the `minimum` and `maximum` pointers in the CalibrationData
+    /// structs will point to arrays of length \p sensorCount, as specified in
+    /// setSensorPins(), and they will only be allocated when calibrate() is
+    /// called. If you only calibrate with the emitters on, the calibration
+    /// arrays that hold the off values will not be allocated (and vice versa).
+    ///
+    /// minSensorValues and maxSensorValues are typically obtained by calling
+    /// readCalibration().
+    ///
+    /// See \ref md_usage for more information and example code.
     void writeCalibration(uint16_t * maxSensorValues, uint16_t * minSensorValues, QTRReadMode mode = QTRReadMode::On);
 
+    /// \brief Reads the calibration data
+    /// 
+    /// \param[out] maxSensorValues A pointer to an array in which to store the
+    /// calibration sensor readings.  There **MUST** be space in the array for
+    /// as many values as there were sensors specified in setSensorPins().
+    ///
+    /// \param[out] minSensorValues A pointer to an array in which to store the
+    /// calibration sensor readings.  There **MUST** be space in the array for
+    /// as many values as there were sensors specified in setSensorPins().   
+    /// 
+    /// \param mode The emitter behavior during the read, as a member of the
+    /// ::QTRReadMode enum. The default is QTRReadMode::On. Manual emitter
+    /// control with QTRReadMode::Manual is not supported.
+    ///
+    /// Calibration values are typically obtained by calling
+    /// calibrate(), and they are stored separately for each sensor, so that
+    /// differences in the sensors are accounted for automatically.
+    ///
+    /// See \ref md_usage for more information and example code.
 
     bool readCalibration(uint16_t * maxSensorValues, uint16_t * minSensorValues, QTRReadMode mode = QTRReadMode::On);
 
