@@ -185,8 +185,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a0021d844b691e1cf9e0fac2530b89c7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the sensors for calibration.  <br /></td></tr>
 <tr class="separator:a0021d844b691e1cf9e0fac2530b89c7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1faa87c08dc2530fc15affd6a59875d" id="r_ad1faa87c08dc2530fc15affd6a59875d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad1faa87c08dc2530fc15affd6a59875d">writeCalibration</a> (uint16_t *maxSensorValues, uint16_t *minSensorValues, <a class="el" href="QTRSensors_8h.html#a3de40c1ece9200d5dcd314dcfe655a6e">QTRReadMode</a> mode=<a class="el" href="QTRSensors_8h.html#a3de40c1ece9200d5dcd314dcfe655a6ea521c36a31c2762741cf0f8890cbe05e3">QTRReadMode::On</a>)</td></tr>
+<tr class="memdesc:ad1faa87c08dc2530fc15affd6a59875d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes the calibration data.  <br /></td></tr>
 <tr class="separator:ad1faa87c08dc2530fc15affd6a59875d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a256838a32ac8dff6989f06dda040f8" id="r_a7a256838a32ac8dff6989f06dda040f8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7a256838a32ac8dff6989f06dda040f8">readCalibration</a> (uint16_t *maxSensorValues, uint16_t *minSensorValues, <a class="el" href="QTRSensors_8h.html#a3de40c1ece9200d5dcd314dcfe655a6e">QTRReadMode</a> mode=<a class="el" href="QTRSensors_8h.html#a3de40c1ece9200d5dcd314dcfe655a6ea521c36a31c2762741cf0f8890cbe05e3">QTRReadMode::On</a>)</td></tr>
+<tr class="memdesc:a7a256838a32ac8dff6989f06dda040f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the calibration data.  <br /></td></tr>
 <tr class="separator:a7a256838a32ac8dff6989f06dda040f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa840b6ef17562d41edf21ddd08e0672e" id="r_aa840b6ef17562d41edf21ddd08e0672e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa840b6ef17562d41edf21ddd08e0672e">resetCalibration</a> ()</td></tr>
 <tr class="memdesc:aa840b6ef17562d41edf21ddd08e0672e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets all calibration that has been done.  <br /></td></tr>
@@ -747,6 +749,19 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Reads the calibration data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">maxSensorValues</td><td><a class="el" href="classA.html">A</a> pointer to an array in which to store the calibration sensor readings. There <b>MUST</b> be space in the array for as many values as there were sensors specified in <a class="el" href="#affa15ba6cbde69fd375f41e5fc63b156" title="Sets the sensor pins.">setSensorPins()</a>.</td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">minSensorValues</td><td><a class="el" href="classA.html">A</a> pointer to an array in which to store the calibration sensor readings. There <b>MUST</b> be space in the array for as many values as there were sensors specified in <a class="el" href="#affa15ba6cbde69fd375f41e5fc63b156" title="Sets the sensor pins.">setSensorPins()</a>. <br  />
+</td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">mode</td><td>The emitter behavior during the read, as a member of the <a class="el" href="QTRSensors_8h.html#a3de40c1ece9200d5dcd314dcfe655a6e" title="Emitter behavior when taking readings.">QTRReadMode</a> enum. The default is <a class="el" href="QTRSensors_8h.html#a3de40c1ece9200d5dcd314dcfe655a6ea521c36a31c2762741cf0f8890cbe05e3">QTRReadMode::On</a>. Manual emitter control with <a class="el" href="QTRSensors_8h.html#a3de40c1ece9200d5dcd314dcfe655a6eae1ba155a9f2e8c3be94020eef32a0301">QTRReadMode::Manual</a> is not supported.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Calibration values are typically obtained by calling <a class="el" href="#a0021d844b691e1cf9e0fac2530b89c7e" title="Reads the sensors for calibration.">calibrate()</a>, and they are stored separately for each sensor, so that differences in the sensors are accounted for automatically.</p>
+<p>See <a class="el" href="md_usage.html">Usage Notes</a> for more information and example code. </p>
+
 <p class="definition">Definition at line <a class="el" href="QTRSensors_8cpp_source.html#l00498">498</a> of file <a class="el" href="QTRSensors_8cpp_source.html">QTRSensors.cpp</a>.</p>
 
 </div>
@@ -799,7 +814,7 @@ v_0 + v_1 + v_2 + \cdots}
 <p>This function is intended to detect a black (or dark-colored) line on a white (or light-colored) background. For a white line, see <a class="el" href="#a231f1ef20c2a7ba325bdb794fc2dedf9" title="Reads the sensors, provides calibrated values, and returns an estimated white line position.">readLineWhite()</a>.</p>
 <p>See <a class="el" href="md_usage.html">Usage Notes</a> for more information and example code. </p>
 
-<p class="definition">Definition at line <a class="el" href="QTRSensors_8h_source.html#l00496">496</a> of file <a class="el" href="QTRSensors_8h_source.html">QTRSensors.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="QTRSensors_8h_source.html#l00549">549</a> of file <a class="el" href="QTRSensors_8h_source.html">QTRSensors.h</a>.</p>
 
 </div>
 </div>
@@ -842,7 +857,7 @@ v_0 + v_1 + v_2 + \cdots}
 <p>This function is intended to detect a white (or light-colored) line on a black (or dark-colored) background. For a black line, see <a class="el" href="#a8f2a5239ae547928284c5f81cd7ec89c" title="Reads the sensors, provides calibrated values, and returns an estimated black line position.">readLineBlack()</a>.</p>
 <p>See <a class="el" href="md_usage.html">Usage Notes</a> for more information and example code. </p>
 
-<p class="definition">Definition at line <a class="el" href="QTRSensors_8h_source.html#l00519">519</a> of file <a class="el" href="QTRSensors_8h_source.html">QTRSensors.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="QTRSensors_8h_source.html#l00572">572</a> of file <a class="el" href="QTRSensors_8h_source.html">QTRSensors.h</a>.</p>
 
 </div>
 </div>
@@ -1213,6 +1228,22 @@ v_0 + v_1 + v_2 + \cdots}
       </table>
 </div><div class="memdoc">
 
+<p>Writes the calibration data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">maxSensorValues</td><td><a class="el" href="classA.html">A</a> pointer to an array in which to read the calibration sensor readings from. There <b>MUST</b> be space in the array for as many values as there were sensors specified in <a class="el" href="#affa15ba6cbde69fd375f41e5fc63b156" title="Sets the sensor pins.">setSensorPins()</a>.</td></tr>
+    <tr><td class="paramname">minSensorValues</td><td><a class="el" href="classA.html">A</a> pointer to an array in which to read the calibration sensor readings from. There <b>MUST</b> be space in the array for as many values as there were sensors specified in <a class="el" href="#affa15ba6cbde69fd375f41e5fc63b156" title="Sets the sensor pins.">setSensorPins()</a>. <br  />
+</td></tr>
+    <tr><td class="paramname">mode</td><td>The emitter behavior during the read, as a member of the <a class="el" href="QTRSensors_8h.html#a3de40c1ece9200d5dcd314dcfe655a6e" title="Emitter behavior when taking readings.">QTRReadMode</a> enum. The default is <a class="el" href="QTRSensors_8h.html#a3de40c1ece9200d5dcd314dcfe655a6ea521c36a31c2762741cf0f8890cbe05e3">QTRReadMode::On</a>. Manual emitter control with <a class="el" href="QTRSensors_8h.html#a3de40c1ece9200d5dcd314dcfe655a6eae1ba155a9f2e8c3be94020eef32a0301">QTRReadMode::Manual</a> is not supported.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This method reads minSensorValues and maxSensorValues the values are stored in <a class="el" href="#adba8c75f5bc2cf57732ee2b96507f339" title="Data from calibrating with emitters on.">calibrationOn</a> and/or <a class="el" href="#a868276364c39750f9914abd50ec68c9d" title="Data from calibrating with emitters off.">calibrationOff</a> for use by the <a class="el" href="#aa2f5d7779744e5d93f6935d2cdf589eb" title="Reads the sensors and provides calibrated values between 0 and 1000.">readCalibrated()</a> method.</p>
+<p>If the storage for the calibration values has not been initialized, this function will (re)allocate the arrays and initialize the maximum and minimum values to 0 and the maximum possible sensor reading, respectively, so that the very first calibration sensor reading will update both of them.</p>
+<p>Note that the <code>minimum</code> and <code>maximum</code> pointers in the <a class="el" href="structQTRSensors_1_1CalibrationData.html" title="Stores sensor calibration data.">CalibrationData</a> structs will point to arrays of length <code>sensorCount</code>, as specified in <a class="el" href="#affa15ba6cbde69fd375f41e5fc63b156" title="Sets the sensor pins.">setSensorPins()</a>, and they will only be allocated when <a class="el" href="#a0021d844b691e1cf9e0fac2530b89c7e" title="Reads the sensors for calibration.">calibrate()</a> is called. If you only calibrate with the emitters on, the calibration arrays that hold the off values will not be allocated (and vice versa).</p>
+<p>minSensorValues and maxSensorValues are typically obtained by calling <a class="el" href="#a7a256838a32ac8dff6989f06dda040f8" title="Reads the calibration data.">readCalibration()</a>.</p>
+<p>See <a class="el" href="md_usage.html">Usage Notes</a> for more information and example code. </p>
+
 <p class="definition">Definition at line <a class="el" href="QTRSensors_8cpp_source.html#l00454">454</a> of file <a class="el" href="QTRSensors_8cpp_source.html">QTRSensors.cpp</a>.</p>
 
 </div>
@@ -1232,7 +1263,7 @@ v_0 + v_1 + v_2 + \cdots}
 
 <p>Data from calibrating with emitters off. </p>
 
-<p class="definition">Definition at line <a class="el" href="QTRSensors_8h_source.html#l00551">551</a> of file <a class="el" href="QTRSensors_8h_source.html">QTRSensors.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="QTRSensors_8h_source.html#l00604">604</a> of file <a class="el" href="QTRSensors_8h_source.html">QTRSensors.h</a>.</p>
 
 </div>
 </div>
@@ -1250,7 +1281,7 @@ v_0 + v_1 + v_2 + \cdots}
 
 <p>Data from calibrating with emitters on. </p>
 
-<p class="definition">Definition at line <a class="el" href="QTRSensors_8h_source.html#l00548">548</a> of file <a class="el" href="QTRSensors_8h_source.html">QTRSensors.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="QTRSensors_8h_source.html#l00601">601</a> of file <a class="el" href="QTRSensors_8h_source.html">QTRSensors.h</a>.</p>
 
 </div>
 </div>
