@@ -28,7 +28,7 @@ Para informações sobre como instalar a biblioteca em sua plataforma, consulte 
 
 ### Calibração
 
-Se você deseja saber mais sobre as mudanças feitas na biblioteca original, consulte o arquivo [calibration.md], que detalha o processo de calibração e outras melhorias introduzidas.
+Se você deseja saber mais sobre as mudanças feitas na biblioteca original, consulte o [Guia de Uso das Funções writeCalibration e readCalibration](calibration.md), que detalha o processo de escrita e leitura de calibração.
 
 ## Exemplos
 
