@@ -5,7 +5,7 @@ Data de lançamento: 2024-10-29<br>
 
 ## Resumo
 
-Esta é uma biblioteca para a IDE do Arduino que facilita a interface com os [sensores de reflexão Pololu QTR][qtr].
+Esta é uma biblioteca para o Framework do Arduino que facilita a interface com os [sensores de reflexão Pololu QTR][qtr].
 
 ## Plataformas Suportadas
 
