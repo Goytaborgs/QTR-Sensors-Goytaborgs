@@ -1,4 +1,4 @@
-# Biblioteca Arduino para os Sensores de Reflexão Pololu QTR
+# Biblioteca para os Sensores de Reflexão Pololu QTR
 
 Versão: 4.1.0<br>
 Data de lançamento: 2024-10-29<br>
