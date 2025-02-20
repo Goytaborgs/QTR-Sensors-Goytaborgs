@@ -19,21 +19,16 @@ A biblioteca QTRSensors oferece suporte às placas de sensores de reflexão de s
 
 Esta biblioteca também funciona com sensores de reflexão integrados ou projetados para robôs da Pololu, como o [Zumo 32U4 Front Sensor Array](https://www.pololu.com/product/3122). No entanto, as bibliotecas dedicadas a esses robôs (por exemplo, a [biblioteca Zumo32U4](https://github.com/pololu/zumo-32u4-arduino-library)) geralmente fornecem uma interface específica para esses sensores e mais fácil de usar.
 
-### Software
+### Instalação
 
-Você pode usar o Gerenciador de Bibliotecas para instalar esta biblioteca:
+Para informações sobre como instalar a biblioteca em sua plataforma, consulte os seguintes documentos:
 
-1. Na IDE do Arduino, abra o menu "Sketch", selecione "Incluir Biblioteca" e depois "Gerenciar Bibliotecas...".
-2. Procure por "QTRSensors".
-3. Clique na entrada da QTRSensors na lista.
-4. Clique em "Instalar".
+- [Instalação no PlatformIO](PlatformIO.md)
+- [Instalação na Arduino IDE](Arduino-IDE.md)
 
-Se isso não funcionar, você pode instalar a biblioteca manualmente:
+### Calibração
 
-1. Baixe o [arquivo da última versão no GitHub](https://github.com/pololu/qtr-sensors-arduino/releases) e descompacte-o.
-2. Renomeie a pasta "qtr-sensors-arduino-xxxx" para "QTRSensors".
-3. Arraste a pasta "QTRSensors" para o diretório "libraries" dentro do seu diretório de sketchbook do Arduino. Você pode visualizar a localização do seu sketchbook abrindo o menu "Arquivo" e selecionando "Preferências" na IDE do Arduino. Se ainda não houver uma pasta "libraries" nesse local, você deve criá-la.
-4. Após instalar a biblioteca, reinicie a IDE do Arduino.
+Se você deseja saber mais sobre as mudanças feitas na biblioteca original, consulte o arquivo [calibration.md], que detalha o processo de calibração e outras melhorias introduzidas.
 
 ## Exemplos
 
