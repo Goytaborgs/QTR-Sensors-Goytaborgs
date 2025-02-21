@@ -6,6 +6,8 @@ on:
       - main  # Change to your default branch
     paths:
       - 'docs/**'  # Only trigger if files in /docs change
+      
+  workflow_dispatch:
 
 jobs:
   deploy:
