@@ -10,8 +10,9 @@ on:
   workflow_dispatch:
 
 permissions:
-  id-token: write  # Ensure GitHub Pages can authenticate
-  contents: read   # Allow reading repository contents
+  #id-token: write  # Ensure GitHub Pages can authenticate
+  #contents: read   # Allow reading repository contents
+  pages: write
   
 jobs:
   deploy:
