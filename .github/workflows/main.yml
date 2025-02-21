@@ -9,6 +9,10 @@ on:
       
   workflow_dispatch:
 
+permissions:
+  id-token: write  # Ensure GitHub Pages can authenticate
+  contents: read   # Allow reading repository contents
+  
 jobs:
   deploy:
     runs-on: ubuntu-latest
