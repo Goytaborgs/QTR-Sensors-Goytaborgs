@@ -58,6 +58,6 @@ Para documentação completa desta biblioteca, consulte a [documentação qtr-se
 
 [a-star]: https://www.pololu.com/a-star
 [app-note]: https://www.pololu.com/docs/0J13
-[doc]: https://pololu.github.io/qtr-sensors-arduino/
+[doc]: https://goytaborgs.github.io/QTR-Sensors-Goytaborgs/
 [older-qtr]: https://www.pololu.com/category/246/older-qtr-sensors
 [qtr]: https://www.pololu.com/category/123/pololu-qtr-reflectance-sensors
